@@ -28,7 +28,7 @@ var sessionData;
 app.use('/', require('./routes/web'))
 
 /**
- * Escuchamos cuando entre un mensaje
+ * Escuchamos cuando entre un mensajesdsfefe
  */
 const listenMessage = () => client.on('message', async msg => {
     const { from, body, hasMedia } = msg;
