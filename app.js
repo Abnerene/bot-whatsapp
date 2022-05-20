@@ -241,3 +241,9 @@ app.get('/nwhats',async (req,res)=>{
 
 });
 
+
+
+app.get('/wakeup',async (req,res)=>{
+    res.send(`true`);
+});
+
