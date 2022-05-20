@@ -32,6 +32,7 @@ app.use('/', require('./routes/web'))
  */
 const listenMessage = () => client.on('message', async msg => {
     const { from, body, hasMedia } = msg;
+    console.log("este es el from",from);
 
     if(!isValidNumber(from)){
         return
@@ -168,7 +169,6 @@ const withOutSession = () => {
         console.log(`Ver QR http://localhost:${port}/qr`)
         socketEvents.sendQR(qr)
     }))
-
     client.on('ready', (a) => {
         connectionReady()
         listenMessage()
@@ -181,11 +181,13 @@ const withOutSession = () => {
     });
 
     client.on('authenticated', (session) => {
+        console.log('Creo que se geenro el archivo');
+        console.log(typeof(session));
         sessionData = session;
         if(sessionData){
             fs.writeFile(SESSION_FILE_PATH, JSON.stringify(session), function (err) {
                 if (err) {
-                    console.log(`Ocurrio un error con el archivo: `, err);
+                    console.log("Ocurrio un error con el archivo: ", err);
                 }
             });
         }
@@ -211,4 +213,31 @@ server.listen(port, () => {
     console.log(`El server esta listo por el puerto ${port}`);
 })
 checkEnvFile();
+
+
+//APISSSSSS
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.get('/nwhats',async (req,res)=>{
+
+
+ const { phone, name, message, media } = req.body;
+ if(message){
+ sendMessage(client, phone, message);
+ }
+ if(media){
+    console.log("mimedia",media);
+    const { MessageMedia } = require('whatsapp-web.js');
+    const myMedia = await MessageMedia.fromUrl(media);
+   
+    sendMessage(client, phone, myMedia);
+    console.log(media);
+ }
+ 
+ res.send(`welcome to my api${media}`);
+
+
+
+});
 

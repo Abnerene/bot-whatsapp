@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/dialogflow": "^4.7.0",
+    "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "dotenv": "^11.0.0",
     "exceljs": "^4.3.0",
@@ -26,7 +27,7 @@
     "socket.io": "^4.4.1",
     "stormdb": "^0.5.2",
     "whatsapp-web.js": "^1.16.6",
-    "xlsx": "^0.16.9"
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "pm2": "^5.1.2",
