@@ -22,10 +22,7 @@
     },
     "STEP_1":{
         "replyMessage":[
-            "Hola wapo! y✌️ Bienvenido a este 🤖 CHATBOT de Whatsapp, lo primero \n",
-            "decirte que mi nombre es *Leifer Mendez*😎  \n",
-            "\n Si necesitas ver más info sobre las capacitacion tecnicas ",
-            "escribe *cursos* o *info* o escribe *audio*"
+            "EL SISTEMA FUNCIONA CORRECTAMENTE"
         ],
         "media":"https://media2.giphy.com/media/VQJu0IeULuAmCwf5SL/giphy.gif",
         "trigger":null,
