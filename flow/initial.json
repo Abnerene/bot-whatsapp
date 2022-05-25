@@ -4,5 +4,11 @@
             "sofia-status"
         ],
         "key": "STEP_1"
+    },
+    {
+        "keywords":  [
+            "1"
+        ],
+        "key": "STEP_001"
     }
 ]

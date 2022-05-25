@@ -1,13 +1,16 @@
 {
-    "DEFAULT":{
+    "STEP_001":{
         "replyMessage":[
-            "*Esta respuesta es un respuesta default* cuando no se consigue una palabra clave \n",
-            "la puedes desactivar en tu archivo .env DEFAULT_MESSAGE=false \n",
-            "tambien te quiero recordar que si presentas algun error pasarte por el repositorio \n",
-            "https://github.com/leifermendez/bot-whatsapp#chatbot-whatsapp-opensource \n",
-            "y recuerda tener la ultima versión del proyecto \n\n",
-            "Prueba escribiendo *hola* \n"
-        ],
+            "*Hola soy SOFIA* 👋, el asistente virtual de PhotoLeón Graduaciones \n",
+            "Puedo ayudarte con las siguiente opciones: \n",
+            "1️⃣ Información de paquete \n",
+            "2️⃣ Agendar entrega de paquete \n",
+            "3️⃣ ¿Cuando es mi sesión de fotos? \n",
+            "4️⃣ Descargar sesión de fotos \n",
+            "5️⃣ Descargar aplicación \n",
+            "6️⃣ Mis pagos \n",
+            "7️⃣ Pagar por transferencia \n",
+            "8️⃣ Necesito algo más \n"],
         "media":null,
         "trigger":null
     },

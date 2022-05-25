@@ -1,6 +1,7 @@
 /**
  * ⚡⚡⚡ DECLARAMOS LAS LIBRERIAS y CONSTANTES A USAR! ⚡⚡⚡
  */
+
 require('dotenv').config()
 const fs = require('fs');
 const express = require('express');
@@ -230,20 +231,73 @@ app.get('/nwhats',async (req,res)=>{
     console.log("mimedia",media);
     const { MessageMedia } = require('whatsapp-web.js');
     const myMedia = await MessageMedia.fromUrl(media);
-   
     sendMessage(client, phone, myMedia);
-    console.log(media);
+    // console.log(media);
  }
  
  res.send(`welcome to my api${media}`);
 
-
-
 });
 
 
+const Pageres = require('pageres');
 
-app.get('/wakeup',async (req,res)=>{
-    res.send(`true`);
+app.get('/sendtiket',async (req,res)=>{
+    const { cliente,phone,url } = req.body;
+    const timestamp = Date.now();
+    const filename =timestamp+"-"+cliente;
+
+    var dir='tiketes';
+    var ruta=`https://photoleongraduaciones.com/tiketes/tiket?u=${cliente}`;
+    await new Pageres({
+        filename : filename,
+        selector:'#canvas',
+        format:'jpg'})
+    .src(ruta,['1200x3300'])
+    .dest('./tiketes')
+    .run()
+    
+    const { MessageMedia } = require('whatsapp-web.js');
+    var media = MessageMedia.fromFilePath(`./tiketes/${filename}.jpg`);
+    
+    sendMessage(client, phone, media)
+    fs.unlinkSync(`./${dir}/${filename}.jpg`);
+    res.send(`ok`);
+
+});
+
+app.get('/bienvenida',async (req,res)=>{ 
+    const { cliente,phone,url } = req.body;
+    const timestamp = Date.now();
+    const filename =timestamp+"-"+cliente;
+    var dir='tiketes';
+    var ruta=`https://photoleongraduaciones.com/tiketes/bienvenida?u=${cliente}`;
+    await new Pageres({
+        filename : filename,
+        selector:'#canvas',
+        format:'jpg'})
+    .src(ruta,['1200x3300'])
+    .dest('./tiketes')
+    .run()
+    // const { MessageMedia } = require('whatsapp-web.js');
+    // const myMedia = await MessageMedia.fromUrl(media);
+    
+    const { MessageMedia } = require('whatsapp-web.js');
+    var media = MessageMedia.fromFilePath(`./tiketes/${filename}.jpg`);
+    
+    sendMessage(client, phone, media)
+    setTimeout(() => {
+    var media = MessageMedia.fromFilePath(`./recursos/descarga.jpg`);
+    sendMessage(client, phone, media,{caption:'mensaje de prueba'})
+    }, 3000);
+
+    fs.unlinkSync(`./${dir}/${filename}.jpg`);
+    
+    setTimeout(() => {
+        sendMessage(client, phone, '*📱 Descarga en Android*  photoleongraduaciones.com/app/android\n\n*📱 Descarga* en iPhone photoleongraduaciones.com/app/iphone'); 
+    }, 6000);
+    
+    res.send(`ok`);
+
 });
 
